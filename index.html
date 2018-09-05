@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.box,.box1,.box2,.box3{
+		width: 300px;
+		height: 300px;
+		border: 1px solid blue;
+		margin: 0 auto;
+	}
+	span{
+		color: blue;
+	}
+	.box1 h3{
+		text-align: center;
+	}
+	.box2 h3{
+		font-size: 20px;
+		color: #000;
+		text-align: center;
+		font-weight: normal;
+	}
+	.box2 button{
+		width: 100%;
+		height: 30px;
+		/* margin-top: 0; */
+	}
+	.box2 input{
+		width: 296px;
+		height: 60px;
+ 	}
+ 	.box2 ul{
+ 		width: 100%;
+ 		height: 125px;
+ 		padding: 0;
+ 	}
+ 	.box2 li{
+ 		height: 30px;
+ 		line-height: 30px;
+ 		font-size: 15px;
+ 		border-bottom: 2px solid #ccc;
+ 	}
+	*{
+		list-style: none;
+	}
+</style>
+<body>
+	<!-- <div class="box">
+		this is node
+	</div> -->
+	<div class="box"></div>
+	<span>点击</span>
+	<div class="box1">
+		<h3>关雎</h3>
+	</div>
+	<div class="box3"></div>
+	<h4>点击</h4>
+	<div class="box2">
+		<h3>留言板</h3>
+		<ul></ul>
+		<input type="text">
+		<button>提交</button>
+	</div>
+</body>
+</html>
+<script>
+	// let box=document.querySelector(".box")
+	// console.dir(box.childNodes)
+	// console.dir(box.nextSibling)
+
+	let box=document.querySelector(".box")
+	let span=document.querySelector("span")
+	// let num=0;
+	span.onclick=function(){
+		// 创建文本节点
+		// let text=document.createTextNode(`这是文本${num}`)
+		// 创建注释节点
+		// let comment=document.createComment(`这是注释${num}`)
+		// 创建元素节点
+		let a=document.createElement("a")   
+
+		let text=document.createTextNode("百度")
+		// 创建属性节点
+		let attr=document.createAttribute("href")
+		// 设置属性节点的值		
+		attr.nodeValue="http://www.baidu.com"
+		// 设置属性节点			
+		a.setAttributeNode(attr)	
+		// num++	
+		// 插入节点				
+		a.appendChild(text)
+		box.appendChild(a);						 		
+	}
+
+
+
+
+	let box1=document.querySelector(".box1")
+	let t=setInterval(move,600)
+	let str="关关雎鸠，在河之洲。窈窕淑女，君子好逑。参差荇菜，左右流之。窈窕淑女，寤寐求之。求之不得，寤寐思服。悠哉悠哉，辗转反侧。参差荇菜，左右采之。窈窕淑女，琴瑟友之。参差荇菜，左右芼之。窈窕淑女，钟鼓乐之。"
+	let start=0;
+	function move(){
+		if(str>=str.length){
+			clearInterval(t)
+		}
+		con=str.substr(start,1)
+		// let a1=document.createElement("a")
+		let text1=document.createTextNode(con)
+		box1.appendChild(text1)
+		// box1.appendChild(a1)
+		start++
+	}
+
+
+
+
+
+	let box3=document.querySelector(".box3")
+	let h4=document.querySelector("h4")
+	console.log(h4)
+	let w,r,g,b;
+	h4.onclick=function(){
+		w=parseInt(Math.random()*100+100)
+		r=parseInt(Math.random()*255)
+		g=parseInt(Math.random()*255)
+		b=parseInt(Math.random()*255)
+		let gg=document.createElement("div")
+		gg.style=`width:${w}px;height:${w}px;border-radius:50%;background:rgb(${r},${g},${b});float:left`
+		box3.appendChild(gg)
+	}
+	
+
+
+	
+	// let btn=document.querySelector("button")
+	// let input=document.querySelector("input")
+	// let ul=document.querySelector("ul")
+	// btn.onclick=function(){
+	// 	let li=ul.firstChild.cloneNode()
+	// 	li.innerText=input.value;
+	// 	input.value=""
+	// 	ul.appendChild(li)
+	// }
+
+
+	let btn=document.querySelector("button")
+	let input=document.querySelector("input")
+	let ul=document.querySelector("ul")
+	btn.onclick=function(){
+		let li =document.createElement("li");
+		li.innerText=input.value;
+		input.value="";
+		ul.appendChild(li);
+	}
+
+
+	
+	
+	
+
+
+</script>
